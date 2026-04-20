@@ -40,16 +40,35 @@
         </div>
       </div>
       
-      <div id="quick-slots">
-        <div class="slot">
-          <span class="slot-icon" style="background:#e67e22;"></span>
-          <span id="food-count">0</span>
-        </div>
-        <button id="eat-btn">ЕСТЬ (E)</button>
-        <button onclick="toggleInventory()">ИНВЕНТАРЬ (TAB)</button>
-      </div>
-      
       <div id="coords">X: 0 Y: 0</div>
+    </div>
+
+    <!-- Хотбар -->
+    <div id="hotbar">
+      <div class="hotbar-slots" id="hotbar-slots"></div>
+    </div>
+
+    <!-- Броня -->
+    <div id="armor-panel">
+      <div class="armor-slot" id="slot-helmet" onclick="selectEquipment('helmet')">
+        <span class="slot-label">Шлем</span>
+      </div>
+      <div class="armor-slot" id="slot-chestplate" onclick="selectEquipment('chestplate')">
+        <span class="slot-label">Броня</span>
+      </div>
+      <div class="armor-slot" id="slot-boots" onclick="selectEquipment('boots')">
+        <span class="slot-label">Ботинки</span>
+      </div>
+      <div class="armor-slot weapon-slot" id="slot-weapon" onclick="selectEquipment('mainHand')">
+        <span class="slot-label">Оружие</span>
+      </div>
+    </div>
+
+    <!-- Кнопки -->
+    <div id="quick-actions">
+      <button id="eat-btn">ЕСТЬ (E)</button>
+      <button onclick="toggleInventory()">ИНВЕНТАРЬ</button>
+      <button onclick="toggleCrafting()">ВЕРСТАК</button>
     </div>
 
     <!-- Инвентарь -->

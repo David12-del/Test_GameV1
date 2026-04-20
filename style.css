@@ -1,8 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   background: #0a0a0a;
@@ -55,10 +51,6 @@ body {
   text-align: center;
 }
 
-.login-box input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
 .login-box input:focus {
   border-color: #6bb3ff;
   box-shadow: 0 0 15px rgba(74, 144, 217, 0.4);
@@ -75,8 +67,6 @@ body {
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s;
-  text-transform: uppercase;
-  letter-spacing: 2px;
 }
 
 .login-box button:hover {
@@ -107,10 +97,10 @@ body {
   top: 15px;
   left: 15px;
   right: 15px;
-  pointer-events: none;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  pointer-events: none;
 }
 
 #stats {
@@ -118,7 +108,6 @@ body {
   padding: 15px 20px;
   border-radius: 12px;
   backdrop-filter: blur(10px);
-  min-width: 220px;
 }
 
 .stat-bar {
@@ -128,15 +117,9 @@ body {
   margin-bottom: 8px;
 }
 
-.stat-bar:last-child {
-  margin-bottom: 0;
-}
+.stat-bar:last-child { margin-bottom: 0; }
 
-.stat-bar span {
-  min-width: 50px;
-  font-size: 13px;
-  font-weight: 600;
-}
+.stat-bar span { min-width: 50px; font-size: 13px; font-weight: 600; }
 
 .bar-container {
   flex: 1;
@@ -149,43 +132,119 @@ body {
 .bar {
   height: 100%;
   border-radius: 9px;
-  transition: width 0.2s ease;
+  transition: width 0.2s;
 }
 
-.stat-bar span:last-child {
-  min-width: 35px;
-  text-align: right;
-  font-weight: bold;
-}
-
-/* Quick slots */
-#quick-slots {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+#coords {
   background: rgba(0, 0, 0, 0.75);
-  padding: 12px 16px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Хотбар */
+#hotbar {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  padding: 10px;
   border-radius: 12px;
   backdrop-filter: blur(10px);
+}
+
+.hotbar-slots {
+  display: flex;
+  gap: 8px;
+}
+
+.hotbar-slot {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.hotbar-slot:hover {
+  border-color: #4a90d9;
+  background: rgba(74, 144, 217, 0.2);
+}
+
+.hotbar-slot span {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.slot-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+}
+
+/* Броня */
+#armor-panel {
+  position: absolute;
+  top: 120px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 10px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.armor-slot {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.armor-slot:hover {
+  border-color: #4a90d9;
+}
+
+.weapon-slot {
+  border-color: rgba(255, 100, 100, 0.5);
+}
+
+.slot-label {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
+/* Кнопки */
+#quick-actions {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   pointer-events: auto;
 }
 
-.slot {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-}
-
-.slot-icon {
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-}
-
-#quick-slots button {
+#quick-actions button {
   padding: 10px 16px;
   font-size: 12px;
   font-weight: bold;
@@ -197,21 +256,12 @@ body {
   transition: all 0.2s;
 }
 
-#quick-slots button:hover {
+#quick-actions button:hover {
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(230, 126, 34, 0.5);
 }
 
-#coords {
-  background: rgba(0, 0, 0, 0.75);
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-}
-
-/* Инвентарь */
+/* Инвентарь и верстак */
 #inventory-panel, #crafting-panel {
   position: absolute;
   top: 50%;
@@ -222,7 +272,7 @@ body {
   border-radius: 16px;
   border: 2px solid #4a90d9;
   box-shadow: 0 0 50px rgba(74, 144, 217, 0.4);
-  min-width: 400px;
+  min-width: 450px;
   max-height: 80vh;
   overflow-y: auto;
   display: none;
@@ -252,7 +302,12 @@ body {
   padding: 12px 15px;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 8px;
-  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.inv-slot:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .inv-color {
@@ -261,24 +316,46 @@ body {
   border-radius: 4px;
 }
 
-.equipment {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 15px;
-  border-radius: 8px;
+.craft-category {
   margin-bottom: 20px;
 }
 
-.equipment h4 {
+.craft-category h4 {
   font-size: 14px;
-  color: #4a90d9;
+  color: #f39c12;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
 
-.equipment div {
-  padding: 5px 0;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.8);
+.craft-item {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.craft-item:hover { background: rgba(255, 255, 255, 0.15); }
+
+.craft-item.can-craft {
+  border-color: #27ae60;
+}
+
+.craft-item.can-craft:hover {
+  background: rgba(39, 174, 96, 0.2);
+  transform: scale(1.02);
+}
+
+.craft-name {
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.craft-mats {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 #inventory-panel button, #crafting-panel button {
@@ -297,46 +374,9 @@ body {
 
 #inventory-panel button:hover, #crafting-panel button:hover {
   transform: scale(1.02);
-  box-shadow: 0 0 15px rgba(74, 144, 217, 0.4);
-}
-
-/* Крафт */
-.craft-item {
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.craft-item:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: scale(1.02);
-}
-
-.craft-item div:first-child {
-  font-weight: bold;
-  font-size: 13px;
-  margin-bottom: 5px;
-}
-
-.craft-mats {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.6);
 }
 
 /* Скроллбар */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #4a90d9;
-  border-radius: 4px;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: #4a90d9; border-radius: 4px; }
