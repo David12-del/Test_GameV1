@@ -1,0 +1,342 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0a0a0a;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+}
+
+/* Экран входа */
+#login-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.login-box {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 40px 60px;
+  border-radius: 16px;
+  text-align: center;
+  border: 2px solid #4a90d9;
+  box-shadow: 0 0 40px rgba(74, 144, 217, 0.3);
+}
+
+.login-box h1 {
+  font-size: 48px;
+  margin-bottom: 30px;
+  color: #4a90d9;
+  text-shadow: 0 0 20px rgba(74, 144, 217, 0.5);
+  letter-spacing: 4px;
+}
+
+.login-box input {
+  width: 250px;
+  padding: 15px 20px;
+  font-size: 18px;
+  border: 2px solid #4a90d9;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  margin-bottom: 20px;
+  outline: none;
+  text-align: center;
+}
+
+.login-box input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.login-box input:focus {
+  border-color: #6bb3ff;
+  box-shadow: 0 0 15px rgba(74, 144, 217, 0.4);
+}
+
+.login-box button {
+  width: 250px;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #4a90d9, #2980b9);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.login-box button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(74, 144, 217, 0.6);
+}
+
+.login-box p {
+  margin-top: 25px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Игра */
+#game-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+#game-canvas {
+  display: block;
+}
+
+/* HUD */
+#hud {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#stats {
+  background: rgba(0, 0, 0, 0.75);
+  padding: 15px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  min-width: 220px;
+}
+
+.stat-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.stat-bar:last-child {
+  margin-bottom: 0;
+}
+
+.stat-bar span {
+  min-width: 50px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.bar-container {
+  flex: 1;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 9px;
+  transition: width 0.2s ease;
+}
+
+.stat-bar span:last-child {
+  min-width: 35px;
+  text-align: right;
+  font-weight: bold;
+}
+
+/* Quick slots */
+#quick-slots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 12px 16px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  pointer-events: auto;
+}
+
+.slot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.slot-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+#quick-slots button {
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #e67e22, #d35400);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#quick-slots button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(230, 126, 34, 0.5);
+}
+
+#coords {
+  background: rgba(0, 0, 0, 0.75);
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+/* Инвентарь */
+#inventory-panel, #crafting-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(15, 15, 25, 0.95);
+  padding: 25px 30px;
+  border-radius: 16px;
+  border: 2px solid #4a90d9;
+  box-shadow: 0 0 50px rgba(74, 144, 217, 0.4);
+  min-width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: none;
+  z-index: 100;
+}
+
+#inventory-panel h3, #crafting-panel h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #4a90d9;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.inv-grid, .craft-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.inv-slot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.inv-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+.equipment {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.equipment h4 {
+  font-size: 14px;
+  color: #4a90d9;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.equipment div {
+  padding: 5px 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#inventory-panel button, #crafting-panel button {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #4a90d9, #2980b9);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 10px;
+}
+
+#inventory-panel button:hover, #crafting-panel button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(74, 144, 217, 0.4);
+}
+
+/* Крафт */
+.craft-item {
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.craft-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.02);
+}
+
+.craft-item div:first-child {
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.craft-mats {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Скроллбар */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a90d9;
+  border-radius: 4px;
+}

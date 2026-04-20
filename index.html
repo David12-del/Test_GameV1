@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Survival Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Экран входа -->
+  <div id="login-screen">
+    <div class="login-box">
+      <h1>ВЫЖИВАНИЕ</h1>
+      <input type="text" id="nickname" placeholder="Введите ник" maxlength="16">
+      <button onclick="login()">ИГРАТЬ</button>
+      <p>WASD - движение | Пробел - удар | Tab - инвентарь | E - есть</p>
+    </div>
+  </div>
+
+  <!-- Игра -->
+  <div id="game-container" style="display:none;">
+    <canvas id="game-canvas"></canvas>
+    
+    <!-- HUD -->
+    <div id="hud">
+      <div id="stats">
+        <div class="stat-bar">
+          <span>HP</span>
+          <div class="bar-container">
+            <div id="hp-bar" class="bar" style="width:100%;background:#e74c3c;"></div>
+          </div>
+          <span id="hp-text">100</span>
+        </div>
+        <div class="stat-bar">
+          <span>Голод</span>
+          <div class="bar-container">
+            <div id="hunger-bar" class="bar" style="width:100%;background:#f39c12;"></div>
+          </div>
+          <span id="hunger-text">100</span>
+        </div>
+      </div>
+      
+      <div id="quick-slots">
+        <div class="slot">
+          <span class="slot-icon" style="background:#e67e22;"></span>
+          <span id="food-count">0</span>
+        </div>
+        <button id="eat-btn">ЕСТЬ (E)</button>
+        <button onclick="toggleInventory()">ИНВЕНТАРЬ (TAB)</button>
+      </div>
+      
+      <div id="coords">X: 0 Y: 0</div>
+    </div>
+
+    <!-- Инвентарь -->
+    <div id="inventory-panel"></div>
+    
+    <!-- Верстак -->
+    <div id="crafting-panel"></div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
